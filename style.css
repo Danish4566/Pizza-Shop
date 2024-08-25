@@ -95,7 +95,7 @@ div a {
     top: 80px;
     left: -100%;
     background: #111;
-    height: 80vh;
+    height: 100vh;
     width: 100%;
     text-align: center;
     display: block;
@@ -134,7 +134,16 @@ div a {
     margin-top: 5px;
   }
 }
-
+@media (max-width: 320px) {
+  nav ul {
+    width: 91%;
+  }
+}
+@media (max-width: 480px) {
+  nav ul {
+    width: 84%;
+  }
+}
 /* Header */
 .bg-img {
   position: relative;
