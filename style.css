@@ -810,7 +810,8 @@ img {
 
 @media (max-width: 480px) {
   .menu-title {
-    font-size: 2rem; /* Adjust title size for very small screens */
+    font-size: 2rem;
+    margin-top: 10px; 
   }
   .menu-item-name {
     font-size: 1.25rem; /* Adjust item name size for very small screens */
