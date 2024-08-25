@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 
 * {
   margin: 0;
@@ -6,18 +6,31 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+
+/* Navbar */
 nav {
   display: flex;
+  height: 60px;
+  width: 100%;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 40px 10px 60px;
+  padding: 0 50px 0 100px;
   flex-wrap: wrap;
+  position: relative; /* Ensure navbar positioning */
+  z-index: 1000; /* Higher z-index to stay on top */
 }
+
+nav .logo {
+  color: #fff;
+  font-size: 35px;
+  font-weight: 600;
+}
+
 nav ul {
   display: flex;
+  flex-wrap: wrap;
   list-style: none;
   align-items: center;
-  gap: 20px;
 }
 
 nav ul li {
@@ -25,8 +38,11 @@ nav ul li {
 }
 
 nav ul li a {
-  color: black;
+  color: #000;
   text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 8px 15px;
   border-radius: 5px;
   letter-spacing: 1px;
   transition: all 0.3s ease;
@@ -37,7 +53,7 @@ nav ul li a:hover {
   color: #eb6700;
 }
 
-nav .menu-btn {
+nav .menu-btn i {
   background: transparent;
   border: none;
   cursor: pointer;
@@ -46,56 +62,80 @@ nav .menu-btn {
   display: none;
 }
 
+input[type="checkbox"] {
+  display: none;
+}
 .btn {
   background: #ff7f00;
   padding: 10px;
   border-radius: 10px;
   font-weight: bold;
 }
-
 div a {
   color: white;
   text-decoration: none;
 }
-
-@media (max-width: 480px) {
+@media (max-width: 1000px) {
   nav {
-    padding: 0 20px 0 25px;
+    padding: 0 40px 0 50px;
   }
-  nav .menu-btn {
+}
+
+@media (max-width: 920px) {
+  nav .menu-btn i {
     display: block;
   }
+
+  #click:checked ~ .menu-btn i:before {
+    content: "\f00d";
+  }
+
   nav ul {
     position: fixed;
     top: 80px;
     left: -100%;
-    height: 100vh;
+    background: #111;
+    height: 80vh;
     width: 100%;
     text-align: center;
     display: block;
     transition: all 0.3s ease;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
   }
-  nav ul.active {
+
+  #click:checked ~ ul {
     left: 0;
   }
+
   nav ul li {
-    padding: 10px;
-  }
-  nav ul li a {
     width: 100%;
+    margin: 20px 0;
+  }
+
+  nav ul li a {
     display: block;
     transition: 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    color: white;
+  }
+
+  #click:checked ~ ul li a {
+    margin-left: 0px;
+  }
+
+  nav ul li a.active,
+  nav ul li a:hover {
+    background: none;
+    color: #ff7f00;
   }
   .btn {
     width: 40%;
     margin-top: 5px;
   }
-  .links {
-    display: flex;
-    flex-direction: column;
-  }
 }
-/* header */
+
+/* Header */
 .bg-img {
   position: relative;
   background-image: url("Images/fresco-pizza-top.jpg");
@@ -103,6 +143,7 @@ div a {
   background-size: cover;
   height: 100vh;
   background-attachment: fixed;
+  z-index: 1; /* Lower z-index than navbar */
 }
 
 .bg-img::before {
@@ -168,11 +209,13 @@ div a {
   top: 28%;
   z-index: 2;
 }
+
 @media (max-width: 768px) {
   .Spoon-img,
   .Knife-img {
     display: none;
   }
+
   .header-text {
     font-size: 83px;
   }
@@ -186,11 +229,13 @@ div a {
     width: 90%;
   }
 }
+
 @media (max-width: 480px) {
   .Spoon-img,
   .Knife-img {
     display: none;
   }
+
   .header-text {
     font-size: 40px;
   }
@@ -204,6 +249,7 @@ div a {
     width: 90%;
   }
 }
+
 /* section 1 */
 .bg-img-2 {
   background-image: url("Images/2nd-bg-img.jpg");
@@ -730,7 +776,7 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('Images/Prepare-dish-image\ \(1\).jpg');
+  background-image: url("Images/Prepare-dish-image\ \(1\).jpg");
   background-size: cover;
   background-position: center;
   border-radius: 20px;
@@ -780,16 +826,17 @@ img {
 }
 .food-card {
   position: relative;
-  background-image: url('Images/bgg.jpg'); /* Set your background image */
+  background-image: url("Images/bgg.jpg"); /* Set your background image */
   background-size: cover;
   background-position: center;
   padding: 30px;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  
+
   color: #fff;
   font-family: Arial, sans-serif;
-  overflow: hidden; }
+  overflow: hidden;
+}
 
 .food-card::before {
   content: "";
@@ -841,11 +888,11 @@ img {
   margin-top: 5px;
   line-height: 1.4;
   z-index: 2;
-  color: #fff;  /* Ensure the description is on top of the overlay */
+  color: #fff; /* Ensure the description is on top of the overlay */
 }
 
 .food-item::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: 0;
@@ -855,16 +902,16 @@ img {
   transform: translateY(-50%);
   z-index: 1;
 }
-.food-card-cont{
+.food-card-cont {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
 }
-.menu-cont{
+.menu-cont {
   margin-block: 30px;
 }
 @media (max-width: 768px) {
-  .food-card-cont{
+  .food-card-cont {
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;
@@ -874,7 +921,7 @@ img {
   }
 }
 @media (max-width: 480px) {
-  .food-card-cont{
+  .food-card-cont {
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;
@@ -946,7 +993,7 @@ img {
 }
 
 .enquiry-form button:hover {
-  background-color:#ff7f00;
+  background-color: #ff7f00;
 }
 
 /* Responsive Styles */
